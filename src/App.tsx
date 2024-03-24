@@ -1,17 +1,17 @@
 import "./App.css";
-import HookMqtt from "./Hook";
-import PageHome from "./pages/PageHome";
-import PageLogin from "./pages/PageLogin";
-import PageUser from "./pages/PageUser";
+
+import RouterProject from "./pages/Router";
 
 function App() {
   return (
     <>
       <div style={{ fontFamily: "Inter" }}>
+        <RouterProject />
         {/* <HookMqtt /> */}
         {/* <PageLogin /> */}
         {/* <PageHome/>  */}
-        <PageUser />
+        {/* <PageUser /> */}
+        {/* <PageHealth /> */}
       </div>
     </>
   );

@@ -16,14 +16,14 @@ export default function PageLogin() {
           <div className="p-5 flex flex-row  w-full h-min justify-center">
             <div className="flex flex-col w-full justify-center items-center">
               <p className="text-5xl text-black font-semibold text-center m-5">
-                FingerPrint
+                Fingerprint
               </p>
               <div className="flex justify-center items-center">
                 <CircularIconButton
                   className="h-60 w-60"
                   classNameIcon="h-40 w-40"
                   icon={FingerprintIcon}
-                  onClick={() => {}}
+                  onClick={() => { window.location.href = "/home"; }}
                 />
               </div>
             </div>
@@ -37,7 +37,7 @@ export default function PageLogin() {
                   className="h-60 w-60"
                   classNameIcon="h-40 w-40"
                   icon={ContactlessIcon}
-                  onClick={() => {}}
+                  onClick={() => { window.location.href = "/home"; }}
                 />
               </div>
             </div>

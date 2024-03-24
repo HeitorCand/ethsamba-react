@@ -4,6 +4,7 @@ import SvgConfig from "@mui/icons-material/Settings";
 import SideBar from "../components/SideBar";
 import ItemNav from "../components/ItemNav";
 import SvgIcon from "@mui/icons-material/Home";
+import { Link } from "react-router-dom";
 
 export default function PageHome() {
   return (
@@ -11,13 +12,14 @@ export default function PageHome() {
       <div className="flex flex-row justify-start">
         <SideBar>
           <div className="h-full">
-            <ItemNav title="Home">
+            <ItemNav title="Home"
+            onClick={() => { window.location.href = "/home"; }}>
               <SvgIcon className="" />
             </ItemNav>
-            <ItemNav title="Profile">
+            <ItemNav title="Profile" onClick={() => { window.location.href = "/usuario"; }}>
               <SvgProfile className=" " />
             </ItemNav>
-            <ItemNav title="Health">
+            <ItemNav title="Health" onClick={() => { window.location.href = "/health"; }}>
               <SvgHealth className=" " />
             </ItemNav>
           </div>
