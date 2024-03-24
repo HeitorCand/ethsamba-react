@@ -17,18 +17,20 @@
     "@types/react": "^18.2.69",
     "@types/react-dom": "^18.2.22",
     "antd": "^5.15.3",
+    "Buffer": "^0.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "flowbite-react": "^0.7.5",
     "mqtt": "^5.5.0",
+    "mqtt-react-hooks": "^3.0.0-alpha.2",
+    "polyfill": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -55,6 +57,10 @@
     ]
   },
   "devDependencies": {
+    "browser-resolve": "^2.0.0",
+    "buffer": "^6.0.3",
+    "detective": "^5.2.1",
+    "process": "^0.11.10",
     "tailwindcss": "^3.4.1"
   }
 }

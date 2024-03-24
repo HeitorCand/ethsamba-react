@@ -1,11 +1,53 @@
 import CircularIconButton from "../components/ButtonCircular";
 import FingerprintIcon from "@mui/icons-material/Fingerprint";
 import ContactlessIcon from "@mui/icons-material/Contactless";
-import mqtt from "mqtt/*";
+
+import mqtt, { IClientOptions } from "mqtt";
+import { useEffect } from "react";
 
 export default function PageLogin() {
+  const client = mqtt.connect('wss://mqtt-dashboard.com:8884/mqtt');
+  useEffect(() => {
+    const options: IClientOptions = {
+      protocol: "wss",
+
+    };
+    const client = mqtt.connect('wss://mqtt-dashboard.com:8884/mqtt', options);
+    // const client = mqtt.connect(options);
+    client.on('connect', function () {
+        console.log('Connected');
+        client.subscribe("INTELIHACK/PUB/CREATE", (err) => {
+          if (!err) {
+            client.publish("OI/EEE", "Hello mqtt");
+          }
+        });
+        client.subscribe("INTELIHACK/PUB/CHECK", (err) => {
+          if (!err) {
+            client.publish("OI/EEE", "Hello mqtt");
+          }
+        });
+        client.subscribe("INTELIHACK/PUB/RFID", (err) => {
+          if (!err) {
+            client.publish("OI/EEE", "Hello mqtt");
+          }
+        });
+    });
+
+
+
+  
+    client.on('error', function (error) {
+        console.log("ERROR", error);
+    });
+    client.on('message', (topic,message,packet)=>{
+        console.log("RECEIVE", topic)
+        console.log(message.toString());
+       // console.log("RECEIVE", packet)
+    });
+  }, []);
 
   return (
+  
     <div className="flex flex-row h-full w-full ">
       <div className="flex flex-col items-center h-screen w-full bg-gradient-to-br from-neutral-950 to-gray-700">
         <h1 className="font-bold text-white text-8xl pt-5">BioTrust</h1>
@@ -23,7 +65,7 @@ export default function PageLogin() {
                   className="h-60 w-60"
                   classNameIcon="h-40 w-40"
                   icon={FingerprintIcon}
-                  onClick={() => { window.location.href = "/home"; }}
+                  onClick={() => { client.publish("INTELIHACK/SUB", "check"); }}
                 />
               </div>
             </div>
@@ -37,7 +79,7 @@ export default function PageLogin() {
                   className="h-60 w-60"
                   classNameIcon="h-40 w-40"
                   icon={ContactlessIcon}
-                  onClick={() => { window.location.href = "/home"; }}
+                  onClick={() => { client.publish("INTELIHACK/SUB", "rfidcheck"); }}
                 />
               </div>
             </div>
@@ -52,19 +94,5 @@ export default function PageLogin() {
       </div>
     </div>
   );
-}
-function useState(arg0: null): [any, any] {
-  throw new Error("Function not implemented.");
-}
-
-function setConnectStatus(arg0: string) {
-  throw new Error("Function not implemented.");
-}
-
-function useEffect(arg0: () => void, arg1: any[]) {
-  throw new Error("Function not implemented.");
-}
-function setIsSub(arg0: boolean) {
-  throw new Error("Function not implemented.");
 }
 

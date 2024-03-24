@@ -4,12 +4,12 @@ import PageHome from "./PageHome";
 import PageLogin from "./PageLogin";
 import PageUser from "./PageUser";
 
-export default function RouterProject() {
+export default function RouterProject(client: any) {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<PageHome />} />
-        <Route path="/" element={<PageLogin />} />
+        <Route path="/" element={<PageLogin  />} />
         <Route path="/health" element={<PageHealth />} />
         <Route path="/usuario" element={<PageUser />} />
       </Routes>
